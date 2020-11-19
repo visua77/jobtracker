@@ -1,0 +1,80 @@
+import React, {useState,useEffect} from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Axios from 'axios'
+import Home from './components/Home'
+import Login from './components/Login'
+import Register from './components/Register'
+import Header from './components/Header'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
+import './style.css'
+import UserContext from './context/UserContext'
+
+const App = ()=>{
+    const [validToken, setValidToken] = useState(false)
+    const [userData, setUserData] = useState({
+        token:undefined, 
+        user:undefined
+    })
+
+useEffect(()=>{
+
+    const checkLogin = async ()=> {
+
+        let token = localStorage.getItem('auth-token')
+        if (token === null){
+            localStorage.setItem('auth-token','')
+            token = ''
+        }
+        const tokenRes = await Axios.post('http://localhost:5000/api/users/tokenvalid',null,{
+            headers:{
+                'x-auth-token':token
+            }
+        })
+        //setValidToken(tokenRes.data)
+        //console.log(tokenRes.data)
+
+          if(tokenRes.data){
+            const userRes = await Axios.get('http://localhost:5000/api/users/user',{
+                headers:{
+                    'x-auth-token':token
+                }
+            })
+
+          
+        
+        setUserData({
+            token,
+            user:userRes.data
+        })    
+        console.log(userRes.data)
+        }  
+    }
+
+    checkLogin()
+
+},[validToken])
+
+useEffect(()=> {
+    
+},[])
+
+    return(
+        <>
+            <BrowserRouter>
+            <UserContext.Provider value={{userData, setUserData}}>
+            <Header />
+            {userData.user ? <Nav /> : null}
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+            </Switch>
+            <Footer />
+            </UserContext.Provider>
+            </BrowserRouter>
+        </>
+    )
+}
+
+export default App
