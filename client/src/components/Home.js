@@ -44,11 +44,6 @@ const Home = ()=> {
     },[userData])  
 
 
-    const handleModal = () => {
-        setModaltoggle(prev => !prev )
-        console.log('the modal is',modaltoggle)
-        }
-
     useEffect(()=>{
         const modalUpdate = ()=> {
 
@@ -73,9 +68,15 @@ const Home = ()=> {
     padding:1rem;
     border-radius: 0 0 32px 8px;
 `
-const handleUpdate = ()=>{
+    const handleUpdate = ()=>{
     console.log('hi')
-}
+    }
+
+    const handleModal = () => {
+        setModaltoggle(prev => !prev )
+        console.log('toggle is',modaltoggle)
+        
+    }
 
     return(
         <div className="home"><div>{userData.user ? <h2>Your collection of jobs:</h2> : <h2>Home</h2>}
