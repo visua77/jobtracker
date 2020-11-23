@@ -130,6 +130,7 @@ export const getUser = async (req, res)=> {
     const user = await PostUser.findById(req.user)
     res.json({name: user.name, 
     id: user._id,
+    email: user.email,
     avatar: user.avatar}
     )
 }

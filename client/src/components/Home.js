@@ -41,7 +41,7 @@ const Home = ()=> {
         setJobs([])
       }
     
-    },[userData])  
+    },[userData,modaltoggle])  
 
 
     useEffect(()=>{
@@ -80,11 +80,13 @@ const Home = ()=> {
 
     return(
         <div className="home"><div>{userData.user ? <h2>Your collection of jobs:</h2> : <h2>Home</h2>}
-        {userData.user ? <p className="welcome-user"><span>Welcome back: <strong>{userData.user.name}!</strong></span>{userData.user.avatar ? <img src={userData.user.avatar} className="avatar" /> : <span className="user-wrapper"><i class="fas fa-user"></i></span>}</p> : null}</div>
+        {userData.user ? <p className="welcome-user"><span>Welcome back: <strong>{userData.user.name}!</strong></span>
+        <span className="no-jobs">you have <strong>{jobs.length} jobs</strong> in your collection!</span>{userData.user.avatar ? <img src={userData.user.avatar} className="avatar" /> : <span className="user-wrapper"><i class="fas fa-user"></i></span>}</p> : null}</div>
         <div className="wrapper">
         {jobs.length ? jobs.map(job => (<div key={job._id} className="job-card">
             <h3 style={{ backgroundImage:`url(${bgImage[Math.floor(Math.random() * bgImage.length)]}`}} className="job-title"><Span className="job-title-rows">{job.title}</Span>
-            <span className="dots"onClick={handleModal}>...</span></h3>
+            <span className="dots"onClick={()=>{handleModal()
+            setId(job._id)}}>...</span></h3>
             <p className="description">{job.description}</p>
             <p className="moment">Status: <span className={job.status=='Green' ? "status green" : job.status=='Yellow' ? "status yellow": "status red"}>{job.status}</span></p>
             <p className="moment">Changed: {moment(job.createdAt).fromNow()}</p>
@@ -92,7 +94,7 @@ const Home = ()=> {
             )): null}
             
             </div>
-            <Modal class={modaltoggle} setModaltoggle={setModaltoggle} />
+            <Modal class={modaltoggle} setModaltoggle={setModaltoggle} id={id} />
         </div>
     )
 

@@ -279,6 +279,24 @@ color:white;}
     border:2px solid rgba(255, 255, 255, 1)
 }
 
+i {
+    transition: all ease-in-out .3s;
+    cursor: pointer;
+}
+
+i:hover {
+    color:rgba(111, 177, 67, 0.4)
+}
+
+.a-mail{
+    color:rgb(98, 139, 70);
+}
+
+.no-jobs {
+    color:rgb(125, 151, 92);
+    font-size: 1.3rem;
+}
+
 .avatar {
     width:80px;
     height:80px;
@@ -320,6 +338,11 @@ color:white;}
     color:rgba(0, 0, 0, .7);
     background-color: rgba(255, 255, 255, .2);
     cursor: pointer;
+    transition: all ease-in-out .3s;
+}
+
+.dots:hover {
+    color:rgba(171, 255, 115, 0.6)
 }
 
 .modal {
@@ -335,18 +358,39 @@ color:white;}
 
 .modal-active {
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
     top:0;
     height:0;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .5);
     width:100%;
     height:100%;
    
 }
 
+.update-wrapper {
+    width:450px;
+    background-color: rgba(0, 0, 0, .7);
+    padding:2rem;
+    border-radius: 20px;
+}
+
 .update-job {
+    color:white;
+}
+
+.close-modal {
+    display:block;
+    color:white;
+    
+    font-size: 1.5rem;
+    text-align: right;
+    cursor: pointer;
+}
+
+.white-color {
     color:white;
 }
 

@@ -6,7 +6,7 @@ const router = express.Router()
 router.post('/',auth, postJobs)
 router.get('/',auth, getJobs)
 router.delete('/:id',auth, deleteJobs)
-router.patch('/:id', updateJob)
+router.patch('/:id',auth, updateJob)
 
 export default router
 
