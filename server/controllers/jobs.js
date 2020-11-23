@@ -1,3 +1,4 @@
+import  moongoose  from 'mongoose'
 import { auth } from '../middleware/auth.js'
 import Job from '../models/jobs.js'
 
@@ -29,7 +30,7 @@ export const postJobs = async(req,res)=> {
 }
 
 export const getJobs = async (req,res)=> {
-    const jobs = await Job.find({userId:req.user})
+    const jobs = await Job.find({userId:req.user}).sort({ createdAt: 'desc' })
     res.json(jobs)
 }
 
@@ -44,4 +45,15 @@ export const deleteJobs = async (req,res)=> {
     }catch (err) {
         res.status(500).json({error: err.message})
     }
+}
+
+export const updateJob = async (req, res)=> {
+    const {id:_id} = req.params
+    const jobPost =req.body
+
+    if(!moongoose.Types.ObjectId.isValid(_id)) {
+        res.status(400).json({msg: "No job found with this ID in the database."})
+    }
+    const updatedJob = await Job.findByIdAndUpdate(_id,jobPost, {new:true} )
+    res.json(updatedJob)
 }

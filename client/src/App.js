@@ -4,11 +4,16 @@ import Axios from 'axios'
 import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
+import AddJob from './components/AddJob'
+import UpdateJob from './components/UpdateJob'
+import Account from './components/Account'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import './style.css'
 import UserContext from './context/UserContext'
+import NavLinks from './context/NavContext'
+
 
 const App = ()=>{
     const [validToken, setValidToken] = useState(false)
@@ -16,6 +21,7 @@ const App = ()=>{
         token:undefined, 
         user:undefined
     })
+    const [navLinks, setNavLinks] = useState('')
 
 useEffect(()=>{
 
@@ -64,13 +70,18 @@ useEffect(()=> {
             <BrowserRouter>
             <UserContext.Provider value={{userData, setUserData}}>
             <Header />
+            <NavLinks.Provider value={{navLinks, setNavLinks}}>
             {userData.user ? <Nav /> : null}
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
+                <Route path="/addjob" component={AddJob} />
+                <Route path="/updatejob" component={UpdateJob} />
+                <Route path="/account" component={Account} />
             </Switch>
             <Footer />
+            </NavLinks.Provider>
             </UserContext.Provider>
             </BrowserRouter>
         </>

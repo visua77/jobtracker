@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-body {
+body,textarea, input {
     font-family: Montserrat, sans-serif;
 }
 
@@ -43,8 +43,14 @@ li:hover {
     background-color: rgba(86, 171, 47, 0.6);
 }
 
+.li-active {
+    color:white;
+    background-color: rgba(86, 171, 47, 0.6);
+}
+
 i {
     margin:1rem;
+    font-size: 2rem;
  
 }
 
@@ -86,6 +92,32 @@ input[type=email],input[type=password],input[type=text] {
     border-radius: 8px;
 }
 
+textarea {
+    width:100%;
+    margin: auto;
+    margin-bottom:1rem;
+    display:block;
+    font-size: 1.4rem;
+    padding:.3rem;
+    max-width:900px;
+    background-color: silver;
+    border:1px solid rgba(0, 0, 0, .4);
+    border-radius: 8px;
+}
+
+select {
+    width:100%;
+    margin: auto;
+    margin-bottom:1rem;
+    display:block;
+    font-size: 1.4rem;
+    padding:.3rem;
+    max-width:900px;
+    background-color: silver;
+    border:1px solid rgba(0, 0, 0, .4);
+    border-radius: 8px;
+}
+
 label {
     display:block;
     margin:auto;
@@ -115,10 +147,23 @@ input[type=submit]:hover{
     color:rgb(85, 85, 85);
 }
 
-input:focus {
+input:focus,textarea:focus,select:focus {
     border:none;
     outline:none;
     box-shadow: 0 0 8px rgba(0, 189, 177, 0.6);
+}
+
+.filebase {
+    width:100%;
+    margin: auto;
+    margin-bottom:1rem;
+    display:block;
+    font-size: 1.4rem;
+    padding:.3rem;
+    max-width:900px;
+    background-color: silver;
+    border:1px solid rgba(0, 0, 0, .4);
+    border-radius: 8px;
 }
 
 
@@ -205,7 +250,6 @@ color:white;}
     flex-wrap: wrap;
     align-items: top;
     margin-top:1rem;
-    
     margin: auto;
     margin-bottom:6rem;
     max-width: 900px;   
@@ -224,9 +268,94 @@ color:white;}
 
 }
 
+.user-wrapper {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:80px;
+    height:80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border:2px solid rgba(255, 255, 255, 1)
+}
+
+.avatar {
+    width:80px;
+    height:80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border:2px solid rgba(255, 255, 255, 1)
+}
+
+.title {
+    background-color: rgba(134, 69, 69,.5);
+    padding:1rem;
+    border-radius: 0 0 32px 8px;
+}
+
+.job-title {
+    
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 300px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    color:white;
+    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
+    padding:0;
+    margin-bottom:.5rem;
+    display:flex;
+    justify-content: space-between;
+    flex-direction:column;
+    flex-wrap: wrap;
+    /*line-height: 3rem;*/
+}
+
+.dots {
+    display:inline;
+    font-size: 4rem;
+    text-align: right;
+    padding:.5rem;
+    color:rgba(0, 0, 0, .7);
+    background-color: rgba(255, 255, 255, .2);
+    cursor: pointer;
+}
+
+.modal {
+    position: absolute;
+    display:flex;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    top:0;
+    height:0;
+    background-color: red;
+    width:100vh;
+    height:100vh;
+    cursor: pointer;
+}
+
+.modal-active {
+    opacity: 1;
+}
+
+.job-title-rows {
+    display:block;
+}
+
+
+
 .status.green {
     color:rgb(28, 95, 28);
     background-color: rgba(86, 171, 47, 0.8);
+    padding:.15rem;
+    border-radius: 6px;
+}
+
+.status.yellow {
+    color:rgb(173, 139, 27);
+    background-color: rgba(184, 174, 33, 0.8);
     padding:.15rem;
     border-radius: 6px;
 }

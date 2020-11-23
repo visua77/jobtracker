@@ -17,7 +17,7 @@ export const createUser = async (req, res)=> {
 
         //const user = req.body
         //const savedUser = new PostUser(user)
-        let {email, password, password2, name} = req.body
+        let {email, password, password2, name, avatar} = req.body
     try{
         
         //validate
@@ -47,7 +47,8 @@ export const createUser = async (req, res)=> {
         const newUser = new PostUser({
             email,
             password: passwordHash,
-            name
+            name,
+            avatar
         })
         
         const savedUser = await newUser.save()
@@ -85,6 +86,7 @@ export const loggingIn = async (req, res)=> {
             user:{
                 id:user._id,
                 name:user.name,
+                avatar:user.avatar
             }
         }) 
     }catch (err) {
@@ -127,5 +129,15 @@ export const tokenValid = async (req, res) => {
 export const getUser = async (req, res)=> {
     const user = await PostUser.findById(req.user)
     res.json({name: user.name, 
-    id: user._id})
+    id: user._id,
+    avatar: user.avatar}
+    )
 }
+
+
+const seedDB = async() => {
+    //Deletes every post in the user-db
+    await PostUser.deleteMany()
+}
+
+//seedDB()

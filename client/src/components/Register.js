@@ -2,11 +2,13 @@ import React, { useState, useContext } from 'react'
 import Axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import UserContext from '../context/UserContext'
+import FileBase from 'react-file-base64'
 
 const Register = ()=> {
     const [email, setEmail]=useState()
     const [password, setPassword]=useState()
     const [password2, setPassword2]=useState()
+    const [avatar, setAvatar]=useState()
     const [name, setName]=useState()
     
 
@@ -18,12 +20,13 @@ const Register = ()=> {
     console.log(password)
     console.log(password2)
     console.log(name)
+    
 
     const handleSubmit = async (e)=> {
         e.preventDefault()
         
         
-        const newUser = {email, password, password2, name}
+        const newUser = {email, password, password2, name, avatar}
         
         await Axios.post('http://localhost:5000/api/users/register', newUser)
         
@@ -52,6 +55,7 @@ const Register = ()=> {
                 <input type="password"name="register-password2"placeholder="Verify password"onChange={(e)=>setPassword2(e.target.value)}></input>
                 <label htmlFor="register-name">Username:</label>
                 <input type="text"name="register-name"onChange={(e)=>setName(e.target.value)}></input>
+                <div className="filebase"><FileBase type="file" multiple={false} onDone={({ base64 }) => setAvatar(base64)} /></div>
                 <input type="submit" value="Register User"></input>
             </form>
         </div>
@@ -59,3 +63,4 @@ const Register = ()=> {
 }
 
 export default Register
+
