@@ -8,6 +8,13 @@
 
 body,textarea, input {
     font-family: Montserrat, sans-serif;
+    
+}
+
+body {
+    background: #FFEFBA;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 header {
@@ -39,8 +46,8 @@ li {
 }
 
 li:hover {
-    color:white;
-    background-color: rgba(86, 171, 47, 0.6);
+    color:rgb(51, 51, 51);
+    background-color: rgba(245, 255, 240, 0.6);
 }
 
 .li-active {
@@ -87,7 +94,7 @@ input[type=email],input[type=password],input[type=text] {
     font-size: 1.4rem;
     padding:.3rem;
     max-width:900px;
-    background-color: silver;
+    background-color: rgba(200, 200, 200, 0.5);
     border:1px solid rgba(0, 0, 0, .4);
     border-radius: 8px;
 }
@@ -100,7 +107,7 @@ textarea {
     font-size: 1.4rem;
     padding:.3rem;
     max-width:900px;
-    background-color: silver;
+    background-color: rgba(200, 200, 200, 0.5);
     border:1px solid rgba(0, 0, 0, .4);
     border-radius: 8px;
 }
@@ -143,8 +150,8 @@ input[type=submit]{
 }
 
 input[type=submit]:hover{
-    background-color: rgba(138, 89, 75, 0.4);
-    color:rgb(85, 85, 85);
+    background-color: rgba(40, 83, 29, 0.6);
+    color:rgb(31, 31, 31);
 }
 
 input:focus,textarea:focus,select:focus {
@@ -201,6 +208,7 @@ p {
     margin:auto;
     padding:.7rem;
     border-radius: 8px;
+    border-bottom:1px solid silver;
 }
 
 p.description {
@@ -218,7 +226,12 @@ p.moment {
 }
 
 a {text-decoration: none;
-color:white;}
+color:white;
+transition: all ease-in-out .3s;}
+
+a:hover{
+    color:rgb(41, 41, 41);
+}
 
 .link-nav {
     color:black;
@@ -302,7 +315,12 @@ i:hover {
     height:80px;
     object-fit: cover;
     border-radius: 50%;
-    border:2px solid rgba(255, 255, 255, 1)
+    border:2px solid rgba(255, 255, 255, 1);
+    transition: all ease-in-out .3s;
+}
+
+.avatar:hover {
+    opacity: .8;
 }
 
 .title {
@@ -396,6 +414,9 @@ i:hover {
 
 .job-title-rows {
     display:block;
+    background-color: rgba(134, 69, 69,.5);
+    padding:1rem;
+    border-radius: 0 0 32px 8px;
 }
 
 
@@ -419,6 +440,51 @@ i:hover {
     background-color: rgba(171, 47, 47, 0.8);
     padding:.15rem;
     border-radius: 6px;
+}
+
+.search-res {
+    background-color: rgba(86, 171, 47, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.search-headline {
+    font-weight: 700;
+}
+
+.search-img {
+    height:50px;
+}
+
+.job-search-card {
+    margin-bottom: 1rem;
+    padding:1rem;
+}
+
+.apply {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.external-link {
+    color:rgb(112, 37, 37);
+}
+
+
+
+.json-p {
+  display: block;/* or inline-block */
+  word-wrap: break-word;
+  overflow: hidden;
+  font-size: 1.2rem;
+  max-height: 8.5em;
+  line-height: 1.5em;
+  padding:1rem;
+  
 }
 
 .footer {

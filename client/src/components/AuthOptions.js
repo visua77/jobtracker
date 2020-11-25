@@ -10,6 +10,7 @@ const AuthOptions = ()=> {
     const logout = ()=> {
         setUserData({token:undefined, user:undefined})
         localStorage.setItem('auth-token','')
+        history.push('/')
     }
 
     const register = ()=> {

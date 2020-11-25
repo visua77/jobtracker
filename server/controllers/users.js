@@ -86,6 +86,7 @@ export const loggingIn = async (req, res)=> {
             user:{
                 id:user._id,
                 name:user.name,
+                email:user.email,
                 avatar:user.avatar
             }
         }) 

@@ -7,6 +7,7 @@ import Register from './components/Register'
 import AddJob from './components/AddJob'
 import UpdateJob from './components/UpdateJob'
 import Account from './components/Account'
+import Search from './components/Search'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -79,6 +80,7 @@ useEffect(()=> {
                 <Route path="/addjob" component={AddJob} />
                 <Route path="/updatejob" component={UpdateJob} />
                 <Route path="/account" component={Account} />
+                <Route path="/search" component={Search} />
             </Switch>
             <Footer />
             </NavLinks.Provider>
