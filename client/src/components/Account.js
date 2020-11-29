@@ -1,11 +1,13 @@
 import React,{useContext,useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import UserContext from '../context/UserContext'
+import ModalDelete from './ModalDelete'
 
 
 const Account = ()=> {
 
     const { setUserData, userData } = useContext(UserContext)
+    const[modaltoggle, setModaltoggle] = useState(false)
     const history = useHistory()
 
     const handleSubmit = async (e)=> {
@@ -19,6 +21,15 @@ const Account = ()=> {
         
         history.push('/')
     }
+
+    const handleModal = (e) => {
+        e.preventDefault()
+        setModaltoggle(prev => !prev )
+        console.log('toggle is',modaltoggle)
+        
+    }
+
+    
     
     return(
         <div>
@@ -31,8 +42,9 @@ const Account = ()=> {
             <p><strong>Username:</strong> {userData.user.name}</p>
             <p><strong>Email:</strong> <a href={`mailto:${userData.user.email}`}className="a-mail">{userData.user.email}</a></p>
             <form>
-                <input type="submit"value="Delete user"onClick={handleSubmit}></input>
+                <input type="submit"value="Delete user"onClick={handleModal}></input>
             </form></> : null}
+            <ModalDelete class={modaltoggle} setModaltoggle={setModaltoggle} />
         </div>
     )
 }

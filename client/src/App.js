@@ -5,7 +5,6 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
 import AddJob from './components/AddJob'
-import UpdateJob from './components/UpdateJob'
 import Account from './components/Account'
 import Search from './components/Search'
 import Header from './components/Header'
@@ -78,7 +77,6 @@ useEffect(()=> {
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/addjob" component={AddJob} />
-                <Route path="/updatejob" component={UpdateJob} />
                 <Route path="/account" component={Account} />
                 <Route path="/search" component={Search} />
             </Switch>

@@ -34,6 +34,17 @@ export const getJobs = async (req,res)=> {
     res.json(jobs)
 }
 
+export const getJobsNoAuth = async (req,res)=> {
+    try{
+        const jobs = await Job.find()
+        res.status(200).json(jobs)
+    }
+    catch (error){
+        res.status(404).json({message:error.message})
+        
+    }
+}
+
 export const deleteJobs = async (req,res)=> {
     try{
         const job = await Job.findOne({userId:req.user, _id:req.params.id})

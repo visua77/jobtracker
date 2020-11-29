@@ -225,6 +225,19 @@ p.moment {
     background:white;
 }
 
+p.warning {
+    display: block;
+    color:rgb(211, 119, 57);
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 1.5rem;
+    max-width: 900px;
+    width:100%;
+    margin:auto;
+    padding:.7rem;
+    
+    
+}
+
 a {text-decoration: none;
 color:white;
 transition: all ease-in-out .3s;}
@@ -403,6 +416,16 @@ i:hover {
     display:block;
     color:white;
     
+    font-size: 1.5rem;
+    text-align: right;
+    cursor: pointer;
+}
+
+.open-delete {
+    display:block;
+    color:black;
+    background-color: rgba(80, 133, 67, 0.2);
+    padding:.3rem;
     font-size: 1.5rem;
     text-align: right;
     cursor: pointer;
