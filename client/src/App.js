@@ -15,7 +15,7 @@ import UserContext from './context/UserContext'
 import NavLinks from './context/NavContext'
 
 
-const App = ()=>{
+export const App = ()=>{
     const [validToken, setValidToken] = useState(false)
     const [userData, setUserData] = useState({
         token:undefined, 
@@ -88,4 +88,4 @@ useEffect(()=> {
     )
 }
 
-export default App
+//export default App
