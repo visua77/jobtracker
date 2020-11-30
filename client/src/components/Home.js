@@ -1,4 +1,4 @@
-import React,{ useContext, useEffect, useState } from 'react'
+import React,{ useContext, useEffect, useState,useRef } from 'react'
 import {Link} from 'react-router-dom'
 import Modal from './Modal'
 import Modal2 from './Modal2'
@@ -6,6 +6,7 @@ import UserContext from '../context/UserContext'
 import NavLinks from '../context/NavContext'
 import moment from 'moment'
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)  
 
 const Home = ()=> {
 
@@ -84,7 +85,8 @@ const Home = ()=> {
         
     }
 
-
+    const myRef = useRef(null)
+    const executeScroll = () => scrollToRef(myRef)
 
     
  /*    const filterData = filtereddata.filter((item) =>{
@@ -94,7 +96,7 @@ const Home = ()=> {
     //console.log(filterData) */
 
     return(
-        <div className="home"><div>{userData.user ? <h2>Your collection of jobs:</h2> : <h2>Home</h2>}
+        <div className="home"ref={myRef}><div>{userData.user ? <h2>Your collection of jobs:</h2> : <h2>Home</h2>}
         {userData.user ? <p className="welcome-user"><span>Welcome back: <strong>{userData.user.name}!</strong></span>
         <span className="no-jobs">you have <strong>{jobs.length} jobs</strong> in your collection!</span>{userData.user.avatar ? <Link to="/account"><img src={userData.user.avatar} className="avatar"onClick={()=>setNavLinks('Acc')} /></Link> : <Link to="/account"><span className="user-wrapper"><i className="fas fa-user"onClick={()=>setNavLinks('Acc')}></i></span></Link>}</p> : null}</div>
         
@@ -113,9 +115,11 @@ const Home = ()=> {
             {userData && jobs.length && status!='All' ? 
             jobs.filter(item =>(item.status===status)).map(job => (<div key={job._id} className="job-card">
             <span className="open-delete"onClick={()=>{handleClick()
+            executeScroll()
             setId(job._id)}}>X</span>
             <h3 style={{ backgroundImage:`url(${bgImage[Math.floor(Math.random() * bgImage.length)]}`}} className="job-title"><span className="job-title-rows">{job.title}</span>
             <span className="dots"onClick={()=>{handleModal()
+            executeScroll()
             setId(job._id)}}>...</span></h3>
             <p className="description">{job.description}</p>
             <p className="moment">Status: <span className={job.status==='Green' ? "status green" : job.status==='Yellow' ? "status yellow": "status red"}>{job.status}</span></p>
@@ -125,9 +129,11 @@ const Home = ()=> {
             :jobs.length && status==='All' ? 
             jobs.map(job => (<div key={job._id} className="job-card">
             <span className="open-delete"onClick={()=>{handleClick()
+            executeScroll()
             setId(job._id)}}>X</span> 
             <h3 style={{ backgroundImage:`url(${bgImage[Math.floor(Math.random() * bgImage.length)]}`}} className="job-title"><span className="job-title-rows">{job.title}</span>
             <span className="dots"onClick={()=>{handleModal()
+            executeScroll()
             setId(job._id)}}>...</span></h3>
             <p className="description">{job.description}</p>
             <p className="moment">Status: <span className={job.status==='Green' ? "status green" : job.status==='Yellow' ? "status yellow": "status red"}>{job.status}</span></p>

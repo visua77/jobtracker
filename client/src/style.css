@@ -486,6 +486,13 @@ i:hover {
     padding:1rem;
 }
 
+.job-search-card:last-of-type {
+    margin-bottom: 6rem;
+    padding:1rem;
+}
+
+
+
 .apply {
     display:flex;
     justify-content: space-between;
