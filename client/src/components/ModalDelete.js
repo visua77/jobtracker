@@ -14,7 +14,7 @@ const ModalDelete = (props)=> {
     const handleSubmit = async (e)=> {
         e.preventDefault()
         
-        await fetch('http://localhost:5000/api/users/delete',{
+        await fetch('https://jobtracker77.herokuapp.com/api/users/delete',{
             method:'DELETE',
             headers: { 
             'x-auth-token':userData.token }

@@ -32,7 +32,7 @@ useEffect(()=>{
             localStorage.setItem('auth-token','')
             token = ''
         }
-        const tokenRes = await Axios.post('http://localhost:5000/api/users/tokenvalid',null,{
+        const tokenRes = await Axios.post('https://jobtracker77.herokuapp.com/api/users/tokenvalid',null,{
             headers:{
                 'x-auth-token':token
             }
@@ -41,7 +41,7 @@ useEffect(()=>{
         //console.log(tokenRes.data)
 
           if(tokenRes.data){
-            const userRes = await Axios.get('http://localhost:5000/api/users/user',{
+            const userRes = await Axios.get('https://jobtracker77.herokuapp.com/api/users/user',{
                 headers:{
                     'x-auth-token':token
                 }

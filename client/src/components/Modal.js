@@ -18,7 +18,7 @@ export const Modal = (props) => {
 
         const postJob = {title, description, status}
         
-        await fetch(`http://localhost:5000/api/users/jobs/${props.id}`,{
+        await fetch(`https://jobtracker77.herokuapp.com/api/users/jobs/${props.id}`,{
             method: 'PATCH',
             body: JSON.stringify(postJob),
             headers: { 'Content-Type': 'application/json',

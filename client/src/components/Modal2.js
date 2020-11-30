@@ -14,7 +14,7 @@ const Modal2 = (props)=> {
     const handleSubmit = async (e)=> {
         e.preventDefault()
 
-        await fetch(`http://localhost:5000/api/users/jobs/${props.id}`,{
+        await fetch(`https://jobtracker77.herokuapp.com/api/users/jobs/${props.id}`,{
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json',
             'x-auth-token':userData.token }
