@@ -56,7 +56,7 @@ const Home = ()=> {
     useEffect(()=>{
         const getData2 = async ()=> {
             
-        await fetch('http://localhost:5000/api/users/jobs/def',{
+        await fetch('https://jobtracker77.herokuapp.com/api/users/jobs/def',{
         })
         .then(res => res.json())
         .then(data => setAllJobs(data))
