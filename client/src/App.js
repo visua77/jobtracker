@@ -66,8 +66,8 @@ useEffect(()=> {
 },[])
 
     return(
-        <>
-            <BrowserRouter>
+        <>Hello world!
+           {/*  <BrowserRouter>
             <UserContext.Provider value={{userData, setUserData}}>
             <Header />
             <NavLinks.Provider value={{navLinks, setNavLinks}}>
@@ -83,7 +83,7 @@ useEffect(()=> {
             <Footer />
             </NavLinks.Provider>
             </UserContext.Provider>
-            </BrowserRouter>
+            </BrowserRouter> */}
         </>
     )
 }
